@@ -11,6 +11,7 @@ node {
 
     stage 'Exec Gradle'
         def buildInfo = artifactoryGradle.run rootDir: "gradle-examples/4/gradle-example-ci-server/", buildFile: 'build.gradle', tasks: 'clean artifactoryPublish'
-stage 'Publish build info'
+    
+    stage 'Publish build info'
         server.publishBuildInfo buildInfo
 }
