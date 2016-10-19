@@ -3,7 +3,7 @@ node {
         git url: 'https://github.com/jfrogdev/project-examples.git'
 
     stage 'Artifactory configuration'
-        def server = Artifactory.newServer url: SERVER_URL, credentialsId: CREDENTIALS
+        def server = Artifactory.newServer('http://localhost:8081/artifactory', 'admin', 'password')
         def artifactoryGradle = Artifactory.newGradleBuild()
         artifactoryGradle.tool = GRADLE_TOOL // Tool name from Jenkins configuration
         artifactoryGradle.deployer repo:'ext-release-local', server: server
