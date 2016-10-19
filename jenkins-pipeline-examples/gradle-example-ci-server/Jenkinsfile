@@ -5,7 +5,7 @@ node {
     stage 'Artifactory configuration'
         def server = Artifactory.newServer('http://localhost:8081/artifactory', 'admin', 'password')
         def artifactoryGradle = Artifactory.newGradleBuild()
-        artifactoryGradle.tool = 'gradle-2.5'
+        artifactoryGradle.tool = 'gradle-3.1'
         artifactoryGradle.deployer repo:'ext-release-local', server: server
         artifactoryGradle.resolver repo:'remote-repos', server: server
 
