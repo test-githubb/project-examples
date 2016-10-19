@@ -10,8 +10,6 @@ node {
         artifactoryGradle.resolver repo:'remote-repos', server: server
 
     stage 'Exec Gradle'
-        def buildInfo = artifactoryGradle.run rootDir: "gradle-examples/4/gradle-example-ci-server/", buildFile: 'build.gradle', tasks: 'clean artifactoryPublish'
+        def buildInfo = artifactoryGradle.run rootDir: "gradle-examples/4/gradle-example-ci-server/", buildFile: 'build.gradle', tasks: 'clean -Dartifactory.publish.artifacts=false -Dartifactory.publish.buildInfo=false artifactoryPublish'
     
-    stage 'Publish build info'
-        server.publishBuildInfo buildInfo
 }
